@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>register</title>
+    <link href="./register.css" rel="stylesheet" type="text/css"/>
+</head>
+<body id="BODY">
+    <div id="DIV_FORM">
+    <form action="register.php" method="post">
+        <table id="TABLE">
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" name="username" id="USERNAME" onfocus="showDesc(this)" onblur="checkText(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="pwd" id="PWD" onfocus="showDesc(this)" onblur="checkText(this)" />
+                </td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input type="password" name="cpwd" id="CPWD" onfocus="showDesc(this)" onblur="checkText(this)" />
+                </td>
+            </tr>
+            <tr><td><input type="submit" name="submit" value="注册" /></td></tr>
+        </table>
+    </form>
+    </div>
+    <script  type="text/javascript"  src="./register.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+#BODY{
+    text-align:center;
+}
+
+#TABLE{
+    text-align:left;
+    margin: auto;
+    float:left;
+}
+#DIV_FORM{
+    margin-left:300px;
+}
+#TABLE tr
+{
+    height:24px;
+}
