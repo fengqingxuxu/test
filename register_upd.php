@@ -1,6 +1,6 @@
 <?php
     require_once 'DataBase.class.php';
-    $db=new DataBase('localhost','root','780840','project');
+
     $username=$_POST["username"];
     $pwd=$_POST["pwd"];
     $cpwd=$_POST["cpwd"];
@@ -14,18 +14,18 @@ if($pwd!==$cpwd){
     header("Refresh:1;url=register.html");
     exit();
 }
-    $rs=$db->select("register","*","username='".$username."'");
-    $num=mysql_num_rows($rs);
+    $db=new DataBase('localhost','root','780840','project');
+    $num=$db->select("register","*","username='".$username."'");
 if($num){
     echo "用户名已存在！";
     header("Refresh:1;url=register.html");
     exit();
 }
     $user_info=array('username'=>$username,'pwd'=>$pwd);
-    $rs=$db->insert("register",$user_info);
+    $rs=$db->insert("register",$user_info,"数据插入成功");
 if($rs){
     echo "注册成功！";
-    header("Refresh:1;url=#");
+    header("Refresh:1;url=register.html");
     exit();
 }
     echo "注册失败！";
