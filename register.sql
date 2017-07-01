@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2017-07-01 08:25:34
+-- Generation Time: 2017-07-01 08:32:26
 -- 服务器版本： 5.6.34
 -- PHP Version: 5.6.28
 
@@ -37,17 +37,9 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`id`, `username`, `pwd`) VALUES
-(6, 'caodong', '123456'),
-(13, '4', '4'),
-(14, '5', '5'),
-(15, '6', '6'),
-(18, '7', '7'),
-(20, '8', '8'),
-(21, '6', '6'),
-(22, '6', '6'),
-(23, '6', '6'),
-(68, '3', '3'),
-(76, '9', '9');
+(77, 'caodong', '123456'),
+(78, 'xiaoming', 'qwerty'),
+(79, 'xiaofang', '123qwe');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +59,7 @@ ALTER TABLE `register`
 -- 使用表AUTO_INCREMENT `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
