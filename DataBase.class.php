@@ -24,7 +24,7 @@ class DataBase{
         $db_selected = mysql_select_db($this->database);
     }
 
-    public function Insert($tablename,$column = array(),$msg){
+    public function Insert($tablename,$column = array()){
         $columnname = "";
         $columnvalue = "";
         foreach($column as $key => $value){
@@ -34,15 +34,10 @@ class DataBase{
         $columnname = substr($columnname,0,strlen($columnname) - 1);
         $columnvalue = substr($columnvalue,0,strlen($columnvalue) - 1);
         $sql = "INSERT INTO $tablename ($columnname) VALUES ($columnvalue)";
-        $this->Query($sql);
-        if($this->result){
-            echo $msg;
-            return $this->result;
-        }
-
+        return $this->Query($sql);
     }
 
-    public function Update($tablename,$column = array(),$where = "",$msg){
+    public function Update($tablename,$column = array(),$where = ""){
         $updatevalue = "";
         foreach ($column as $key => $value) {
             $updatevalue .= $key . "='".$value."',";
@@ -50,10 +45,7 @@ class DataBase{
         $updatevalue = substr($updatevalue,0,strlen($updatevalue) - 1);
         $sql = "UPDATE $tablename SET $updatevalue";
         $sql .=$where ? " WHERE $where" : null;
-        $this->Query($sql);
-        if($this->result){
-            echo $msg;
-        }
+        return $this->Query($sql);
     }
 
     public function Select($tablename,$columnname = "*",$where = ""){
@@ -64,13 +56,10 @@ class DataBase{
         return $num;
     }
 
-    public function Delete($tablename,$where = "",$msg){
+    public function Delete($tablename,$where = ""){
         $sql = "DELETE FROM $tablename";
         $sql .=$where ? " WHERE $where" : null;
-        $this->Query($sql);
-        if($this->result){
-            echo $msg;
-        }
+        return $this->Query($sql);
     }
 
     public function Query($sql){
@@ -78,8 +67,19 @@ class DataBase{
         return $this->result;
     }
 
+    public function Msg($result,$msg1,$msg2,$addr1,$addr2){
+        if($result){
+            echo "$msg1";
+            header("Refresh:1;url=$addr1.html");
+            exit();
+        }
+            echo "$msg2";
+            header("Refresh:1;url=$addr2.html");
+    }
+
     public function __destruct(){
         mysql_close($this->con);
     }
+
 }
 ?>

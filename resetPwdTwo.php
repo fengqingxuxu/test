@@ -1,9 +1,10 @@
 <?php
     require_once 'DataBase.class.php';
 
-    $npwd = isset($_POST["npwd"]) ? $_POST["npwd"] : "";
-    $cnpwd = isset($_POST["cnpwd"]) ? $_POST["cnpwd"] : "";    var_dump($_GET["username"]);
-    $username = $_GET["username"];
+    $npwd = md5(isset($_POST["npwd"]) ? $_POST["npwd"] : "");
+    $cnpwd = md5(isset($_POST["cnpwd"]) ? $_POST["cnpwd"] : "");
+    session_start();
+    $username = $_SESSION['username'];
 
 if($npwd == "" || $cnpwd == ""){
     echo "请填写完整信息！";
@@ -17,12 +18,6 @@ if($npwd !== $cnpwd){
 }
     $db = new DataBase('localhost','root','780840','project');
     $userInfo = array('pwd'=>$npwd);
-    $rs = $db->Update("user",$userInfo,"username=$username","数据更新成功");
-if($rs){
-    echo "更新成功！";
-    header("Refresh:1;url = login.html");
-    exit();
-}
-    echo "更新失败！";
-    header("Refresh:1;url = resetPwdOne.html");
+    $result = $db->Update("user",$userInfo,"username = '".$username."'");
+    $db->Msg($result,"更新成功","更新失败","login","resetPwdOne");
 ?>

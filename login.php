@@ -3,7 +3,7 @@
     require_once 'DataBase.class.php';
 
     $username   = isset($_POST["username"]) ? $_POST["username"] : "";
-    $pwd            = isset($_POST["pwd"]) ? $_POST["pwd"] : "";
+    $pwd            = md5(isset($_POST["pwd"]) ? $_POST["pwd"] : "");
 
 if($username == "" || $pwd == ""){
     echo "请填写完整信息！";
